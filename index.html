@@ -84,7 +84,7 @@
     /* NOTIFICACIONES */
     .notif {
       position: fixed;
-      bottom: 20px;
+      bottom: 80px; /* más arriba, tipo toast real */
       left: 50%;
       transform: translateX(-50%);
       background: #1c1c1c;
@@ -94,6 +94,7 @@
       display: none;
       box-shadow: 0 0 15px rgba(0,0,0,0.5);
       min-width: 260px;
+      z-index: 9999;
     }
 
     .notif strong { color: #00e676; }
@@ -157,13 +158,7 @@
       }, 4500);
     }
 
-    setInterval(mostrarNotif, 6000);
-  </script>
-
-</body>
-</html>
-
-
+    // intervalo activo (no visible en pantalla)
     setInterval(mostrarNotif, 6000);
   </script>
 
