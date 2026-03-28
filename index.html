@@ -27,58 +27,77 @@
       text-align: center;
     }
 
-    .container {
-      padding: 20px;
-    }
+    .container { padding: 20px; }
 
     .verified {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: bold;
       margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
     }
 
-    .verified span {
-      color: #00ff88;
-      margin-left: 8px;
+    .check {
+      width: 22px;
+      height: 22px;
+      background: #00c853;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
     }
 
-    .cta {
-      margin-top: 40px;
+    .bonus-img {
+      width: 340px;
+      margin-top: 30px;
     }
+
+    .cta { margin-top: 40px; }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
+      gap: 12px;
       background: #25D366;
       color: black;
-      padding: 15px 25px;
-      border-radius: 10px;
+      padding: 18px 32px;
+      border-radius: 14px;
       font-weight: bold;
       text-decoration: none;
-      font-size: 18px;
-      box-shadow: 0 0 15px rgba(0,255,150,0.7);
+      font-size: 20px;
+      box-shadow: 0 0 25px rgba(0,255,150,0.9);
+      transition: transform 0.15s ease;
     }
 
-    .btn img {
-      width: 22px;
-    }
+    .btn:active { transform: scale(0.95); }
 
-    .sub {
-      margin-top: 15px;
-      font-size: 14px;
-    }
+    .btn img { width: 24px; }
 
+    .sub { margin-top: 12px; font-size: 14px; opacity: 0.9; }
+
+    /* NOTIFICACIONES */
     .notif {
       position: fixed;
       bottom: 20px;
-      left: 20px;
-      background: rgba(0,0,0,0.8);
-      padding: 12px 15px;
-      border-radius: 10px;
-      font-size: 13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1c1c1c;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 14px;
       display: none;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      min-width: 260px;
     }
+
+    .notif strong { color: #00e676; }
+
   </style>
 </head>
 <body>
@@ -88,19 +107,20 @@
     <!-- LOGO -->
     <img src="logo.png" width="200">
 
-    <!-- TEXTO VERIFICADO -->
+    <!-- VERIFICADO -->
     <div class="verified">
-      PLATAFORMA VERIFICADA <span>✔️</span>
+      PLATAFORMA VERIFICADA
+      <div class="check">✔</div>
     </div>
 
-    <!-- IMAGEN 50% -->
-    <img src="bonus.png" width="300" style="margin-top:30px;">
+    <!-- BONUS -->
+    <img src="bonus.png" class="bonus-img">
 
     <!-- BOTON -->
     <div class="cta">
-      <a class="btn" href="https://wa.me/5491173744879?text=Quiero%20aprovechar%20el%2050%25" onclick="fbq('track','Purchase');">
+      <a class="btn" href="#" onclick="goWhatsApp()">
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-        Reclámalo acá
+        Reclámalo ahora
       </a>
 
       <div class="sub">Pagos en el acto!</div>
@@ -108,27 +128,41 @@
 
   </div>
 
-  <!-- NOTIFICACIONES FAKE -->
+  <!-- NOTIFICACION -->
   <div class="notif" id="notif"></div>
 
   <script>
+    function goWhatsApp(){
+      fbq('track','Lead');
+      setTimeout(()=>{
+        window.location.href = "https://wa.me/5491173744879?text=Quiero%20saber%20mas%20sobre%20esto";
+      }, 800);
+    }
+
     const mensajes = [
-      "Juan ganó $45.000 en Ruleta",
-      "Martina retiró $32.500 en Pragmatic",
-      "Lucas ganó $78.000 en Slots",
-      "Sofía retiró $25.000 en RubyPlay",
-      "Diego ganó $90.000 en Blackjack"
+      "Julián retiró <strong>$763.300</strong> en Ruleta",
+      "Martina ganó <strong>$120.000</strong> en Pragmatic",
+      "Lucas retiró <strong>$95.000</strong> en Slots",
+      "Sofía ganó <strong>$210.000</strong> en RubyPlay",
+      "Diego retiró <strong>$180.000</strong> en Blackjack"
     ];
 
     function mostrarNotif() {
       const notif = document.getElementById('notif');
-      notif.innerText = mensajes[Math.floor(Math.random()*mensajes.length)];
+      notif.innerHTML = mensajes[Math.floor(Math.random()*mensajes.length)];
       notif.style.display = 'block';
 
       setTimeout(() => {
         notif.style.display = 'none';
-      }, 4000);
+      }, 4500);
     }
+
+    setInterval(mostrarNotif, 6000);
+  </script>
+
+</body>
+</html>
+
 
     setInterval(mostrarNotif, 6000);
   </script>
