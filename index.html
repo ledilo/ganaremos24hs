@@ -136,7 +136,11 @@
 
   <script>
     function goWhatsApp(){
-      fbq('track','Lead');
+      fbq('track','Purchase', {
+  value: 1.00,
+  currency: 'ARS'
+});
+
       setTimeout(()=>{
         window.location.href = "https://wa.me/5491173744879?text=Quiero%20saber%20mas%20sobre%20esto";
       }, 800);
