@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganamos</title>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3123193024735427');
+    fbq('track', 'PageView');
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #5b1aa3;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .verified {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .verified span {
+      color: #00ff88;
+      margin-left: 8px;
+    }
+
+    .cta {
+      margin-top: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: black;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 18px;
+      box-shadow: 0 0 15px rgba(0,255,150,0.7);
+    }
+
+    .btn img {
+      width: 22px;
+    }
+
+    .sub {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .notif {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.8);
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-size: 13px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- LOGO -->
+    <img src="logo.png" width="200">
+
+    <!-- TEXTO VERIFICADO -->
+    <div class="verified">
+      PLATAFORMA VERIFICADA <span>✔️</span>
+    </div>
+
+    <!-- IMAGEN 50% -->
+    <img src="bonus.png" width="300" style="margin-top:30px;">
+
+    <!-- BOTON -->
+    <div class="cta">
+      <a class="btn" href="https://wa.me/5491173744879?text=Quiero%20aprovechar%20el%2050%25" onclick="fbq('track','Purchase');">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+        Reclámalo acá
+      </a>
+
+      <div class="sub">Pagos en el acto!</div>
+    </div>
+
+  </div>
+
+  <!-- NOTIFICACIONES FAKE -->
+  <div class="notif" id="notif"></div>
+
+  <script>
+    const mensajes = [
+      "Juan ganó $45.000 en Ruleta",
+      "Martina retiró $32.500 en Pragmatic",
+      "Lucas ganó $78.000 en Slots",
+      "Sofía retiró $25.000 en RubyPlay",
+      "Diego ganó $90.000 en Blackjack"
+    ];
+
+    function mostrarNotif() {
+      const notif = document.getElementById('notif');
+      notif.innerText = mensajes[Math.floor(Math.random()*mensajes.length)];
+      notif.style.display = 'block';
+
+      setTimeout(() => {
+        notif.style.display = 'none';
+      }, 4000);
+    }
+
+    setInterval(mostrarNotif, 6000);
+  </script>
+
+</body>
+</html>
