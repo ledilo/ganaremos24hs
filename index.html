@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ganamos</title>
 
-  <!-- Meta Pixel -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- META PIXEL -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -14,158 +16,100 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+
     fbq('init', '3222877481226419');
     fbq('track', 'PageView');
   </script>
 
+  <!-- ANIMACION -->
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #5b1aa3;
-      color: white;
-      text-align: center;
+    @keyframes softPulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
-    .container { padding: 20px; }
-
-    .verified {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
+    .pulse-soft {
+      animation: softPulse 1.8s ease-in-out infinite;
     }
-
-    .check {
-      width: 22px;
-      height: 22px;
-      background: #00c853;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .bonus-img {
-      width: 340px;
-      margin-top: 30px;
-    }
-
-    .cta { margin-top: 40px; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: #25D366;
-      color: black;
-      padding: 18px 32px;
-      border-radius: 14px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 20px;
-      box-shadow: 0 0 25px rgba(0,255,150,0.9);
-      transition: transform 0.15s ease;
-    }
-
-    .btn:active { transform: scale(0.95); }
-
-    .btn img { width: 24px; }
-
-    .sub { margin-top: 12px; font-size: 14px; opacity: 0.9; }
-
-    /* NOTIFICACIONES */
-    .notif {
-      position: fixed;
-      bottom: 20px; /* pegado abajo como pediste */ /* más arriba, tipo toast real */
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1c1c1c;
-      padding: 14px 18px;
-      border-radius: 12px;
-      font-size: 14px;
-      display: none;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-      min-width: 260px;
-      max-width: 90%;
-      text-align: center;
-      z-index: 9999;
-    }
-
-    .notif strong { color: #00e676; }
-
   </style>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
 
-  <div class="container">
+<body class="bg-black text-white font-sans">
 
-    <!-- LOGO -->
-    <img src="logo.png" width="200">
+  <!-- HERO -->
+  <section class="min-h-screen flex flex-col items-center text-center px-6 pt-16 pb-10 relative overflow-hidden">
 
-    <!-- VERIFICADO -->
-    <div class="verified">
-      PLATAFORMA VERIFICADA
-      <div class="check">✔</div>
+    <div class="absolute w-[500px] h-[500px] bg-purple-600 opacity-20 blur-3xl rounded-full top-0"></div>
+
+    <div class="relative z-10 w-full max-w-md flex flex-col items-center">
+
+      <!-- LOGO -->
+      <div class="mb-6 text-5xl md:text-6xl font-extrabold tracking-wide drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]">
+        G<span class="text-purple-500">♠</span>NAMOS
+      </div>
+
+      <!-- TITULO -->
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-center">
+        <span class="block">Jugá con</span>
+        <span class="block">confianza en</span>
+        <span class="block text-purple-500">la mejor plataforma</span>
+      </h1>
+
+      <!-- BOTON (SIN LINK DIRECTO) -->
+      <button onclick="goWhatsApp()" 
+        class="mt-8 w-full flex justify-center items-center gap-3 py-4 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full text-lg font-bold shadow-lg transition pulse-soft hover:scale-105">
+        <i class="fab fa-whatsapp text-xl"></i>
+        WHATSAPP →
+      </button>
+
+      <p class="mt-3 text-gray-400 text-sm">
+        Escribinos y reclamá tu bono ahora
+      </p>
+
+      <!-- BONUS -->
+      <div class="mt-10 w-full border border-purple-500 rounded-2xl p-6 text-center bg-[#0a0a0a] shadow-[0_0_30px_rgba(168,85,247,0.3)]">
+        <p class="text-purple-400 text-xs tracking-widest">• PROMO ACTIVADA •</p>
+        <h2 class="text-3xl font-extrabold mt-3">BONO 30% EXTRA</h2>
+        <p class="text-gray-400 mt-2 text-sm">En tu primera carga y en estados</p>
+      </div>
+
     </div>
 
-    <!-- BONUS -->
-    <img src="bonus.png" class="bonus-img">
+  </section>
 
-    <!-- BOTON -->
-    <div class="cta">
-      <a class="btn" href="#" onclick="goWhatsApp()">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-        Reclámalo ahora
-      </a>
-
-      <div class="sub">Pagos en el acto!</div>
-    </div>
-
+  <!-- SOCIAL PROOF -->
+  <div id="noti" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900 px-6 py-3 rounded-xl shadow-xl border border-zinc-700 text-sm">
+    <span id="texto">Julián M. retiró <span class="text-purple-400 font-bold">$24.300 ARS</span></span>
   </div>
 
-  <!-- NOTIFICACION -->
-  <div class="notif" id="notif"></div>
-
   <script>
+
+    // 👉 WHATSAPP + PIXEL (FORMA SEGURA)
     function goWhatsApp(){
+
       fbq('track','Purchase', {
-  value: 1.00,
-  currency: 'ARS'
-});
+        value: 1.00,
+        currency: 'ARS'
+      });
 
       setTimeout(()=>{
-        window.location.href = "https://wa.me/5491173744879?text=Quiero%20saber%20mas%20sobre%20esto";
-      }, 800);
+        window.location.href = "https://api.whatsapp.com/send?phone=549XXXXXXXXXX&text=Quiero%20mi%20bono";
+      }, 600);
     }
 
-    const mensajes = [
-      "Julián retiró <strong>$763.300</strong> en Ruleta",
-      "Martina ganó <strong>$120.000</strong> en Pragmatic",
-      "Lucas retiró <strong>$95.000</strong> en Slots",
-      "Sofía ganó <strong>$210.000</strong> en RubyPlay",
-      "Diego retiró <strong>$180.000</strong> en Blackjack"
-    ];
+    // 👉 SOCIAL PROOF
+    const nombres = ["Lucas","Martín","Sofía","Valentina","Franco","Micaela"];
+    const montos = [200000,85000,43000,130000,157000,410000];
 
-    function mostrarNotif() {
-      const notif = document.getElementById('notif');
-      notif.innerHTML = mensajes[Math.floor(Math.random()*mensajes.length)];
-      notif.style.display = 'block';
+    setInterval(()=>{
+      const n = nombres[Math.floor(Math.random()*nombres.length)];
+      const m = montos[Math.floor(Math.random()*montos.length)];
+      document.getElementById("texto").innerHTML =
+        `${n} retiró <span class='text-purple-400 font-bold'>$${m.toLocaleString()} ARS</span>`;
+    },4000);
 
-      setTimeout(() => {
-        notif.style.display = 'none';
-      }, 4500);
-    }
-
-    // intervalo activo (no visible en pantalla)
-    setInterval(mostrarNotif, 6000);
   </script>
 
 </body>
